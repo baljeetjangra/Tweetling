@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+  Home
+{% endblock head_title %}
+
+{% block content %}
+
+  <section class="mt-3">
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-3 col-md-6">
+          <div class="text-center">
+            <h3 class="mb-3">Welcome to Tweetling, User</h3>
+          </div>
+
+          <div class="text-center">
+            <form method="POST" class="form-inline ml-auto my-2 my-lg-0">
+              {% csrf_token %}
+              <textarea class="pt-1 pl-2" placeholder="What's hapeninig?" style="resize: none; overflow:hidden" name="tweet" id="" cols="40" rows="2"></textarea>
+              <button class="btn btn-primary mx-2 my-2 my-sm-0" type="submit">Tweet</button>
+            </form>
+          </div>
+          {% for tweet in tweets  %}
+          <div class="tweet border my-3 py-2 px-2">
+            <p class="badge py-1 px-1 badge-lg badge-success">{{tweet.user.first_name|first}}</p>
+            <p>{{tweet.user.first_name}}</p>
+            <h4>{{tweet.tweet}}</h4>
+            <div class="row mt-4">
+              <div class="col-sm-6">
+                <a class="btn btn-sm btn-outline-primary" href="">Like</a>
+                <a class="btn btn-sm btn-primary" href="">Unlike</a>
+                <a class="btn btn-sm btn-outline-success" href="">Retweet</a>
+              </div>
+              <div class="col-sm-6 text-right ">
+                <p class="">{{tweet.updated_at}}</p>
+              </div>
+            </div>
+
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
