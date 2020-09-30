@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
-    # 'tweet',
+    'tweet',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
