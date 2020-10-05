@@ -11,7 +11,7 @@ admin.site.index_title = "Welcome to the Portal"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('tweet.urls')),
-    path('accounts/',include('accounts.urls')),
+    path('accounts/',include(('accounts.urls', 'accounts'),namespace='accounts')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

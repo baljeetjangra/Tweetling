@@ -18,15 +18,19 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Profile <span class=""></span></a>
         </li>
+        {% if user.is_authenticated %}
         <li class="nav-item active">
-            <a class="nav-link" href="#">Login <span class=""></span></a>
+          <a class="nav-link" href="{% url 'accounts:logout' %}">Sigout <span class=""></span></a>
         </li>
+        {% else %}
         <li class="nav-item active">
-            <a class="nav-link" href="#">Signup <span class=""></span></a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Sigout <span class=""></span></a>
-        </li>
+          <a class="nav-link" href="{% url 'accounts:login' %}">Login <span class=""></span></a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link" href="{% url 'accounts:signup' %}">Signup <span class=""></span></a>
+      </li> 
+          
+        {% endif %}
       </ul>
       
     </div>

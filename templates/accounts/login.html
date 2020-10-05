@@ -12,6 +12,7 @@
                 <h1 class="mb-5">Please enter details to Login</h1>
                 <p>Don't have an account? <a href="">Signup now</a></p>
                 <form method="POST">
+                  {% csrf_token %}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" name="email" class="form-control" placeholder="Enter your email">
@@ -20,8 +21,15 @@
                         <label for="exampleInputPassword">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Enter Password">
                       </div>
+                      {% if messages %}
+                      <div class="alert alert-danger" role="alert">
+                          {% for message in messages %}
+                            <p class="mb-0 {{ message.tags }}">{{ message }}</p>
+                          {% endfor %}
+                      </div>
+                        {% endif %}
                       <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn-block btn btn-primary">Login</button>
                       </div>
                   </form>
             </div>
